@@ -20,28 +20,29 @@
             <h1>TODOLIST</h1>
 
         </header>
-      <main>
-        <div class="container">
-            <div class="card">
-                <div class="card-header">
-                    <input type="text" placeholder="AGGIUNGI">
-                </div>
-                <div class="card-body">
-                    <ul>
-                        <li class="todo-item" :class="todo.done === true ?'text-decoration-line-through': '' "
-                         v-for="(todo,i) in todos">
-                            {{ todo.text }}
-                            <a href=""> <i class="fa-solid fa-trash-can"> </i></a>
-                        </li>
-                    </ul>
+        <main>
+            <div class="container">
+                <div class="card">
+                    <div class="card-header card-input">
+                        <input type="text" v-model.trim="addTodo" placeholder="Aggiungi cose da fare..">
+                        <button type="button" @click="newTodo()" class="btn btn-primary">Vai</button>
+                    </div>
+                    <div class="card-body">
+                        <ul>
+                            <li class="todo-item" :class="todo.done === true ?'text-decoration-line-through': '' "
+                                v-for="(todo,i) in todos" @click="trueFalse(todo)">
+                                {{ todo.text }}
+                                <a href="#"> <i class="fa-solid fa-trash-can" @click="removeTodo(todo,i)"> </i></a>
+                            </li>
+                        </ul>
 
+                    </div>
                 </div>
+
+
             </div>
+        </main>
 
-
-        </div>
-      </main>
-        
 
 
 

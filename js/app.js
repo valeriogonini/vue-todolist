@@ -29,12 +29,32 @@ createApp({
                         text: "lava la macchina",
                         done: false
                     }
-                ]
+                ],
+
+            addTodo: ''
         }
     },
-    methods : {
-        removeTodo(todo,i) {
-            this.todo.splice(i,1)
+
+    methods: {
+        removeTodo(todo, i) {
+            this.todos.splice(i, 1)
+        },
+        trueFalse(todo) {
+            if (todo.done === false) {
+                todo.done = true
+            } else {
+                todo.done = false
+            }
+        },
+        newTodo(){
+            if (this.addTodo !== '') {
+                this.addTodo = {
+                    text: this.addTodo,
+                    done: false,
+                }
+                this.todos.push(this.addTodo)
+                this.addTodo = ''
+            }
         }
     }
 
